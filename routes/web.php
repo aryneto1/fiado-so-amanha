@@ -14,14 +14,28 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('listagem');
 });
 
 /*Route::get('/dashboard', function () {
     return view('cliente.index');
 })->middleware(['auth'])->name('dashboard');*/
 
-Route::get('/dashboard', [\App\Http\Controllers\ClienteController::class, 'index'])
-    ->name('dashboard');
+Route::get('/listagem', [\App\Http\Controllers\ClienteController::class, 'index'])
+    ->name('listagem');
+
+Route::post('/listagem/adicionar', [\App\Http\Controllers\ClienteController::class, 'store'])
+    ->name('adicionar');
+Route::put('/listagem/adicionar', [\App\Http\Controllers\ClienteController::class, 'store']);
+
+Route::get('/listagem/perfil/{id}', [\App\Http\Controllers\ClienteController::class, 'show'])
+    ->name('perfil');
+
+Route::get('/dividas', [\App\Http\Controllers\DividaController::class, 'index'])
+    ->name('dividas');
+
+Route::post('/dividas/adicionar', [\App\Http\Controllers\ClienteController::class, 'store'])
+    ->name('addDividas');
+Route::put('/dividas/adicionar', [\App\Http\Controllers\ClienteController::class, 'store']);
 
 require __DIR__.'/auth.php';
