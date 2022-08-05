@@ -11,22 +11,23 @@ class DividaController extends Controller
     public function index(Request $request): object
     {
         $clientes = Cliente::all();
+        $mensagem = $request->session()->get('mensagem');
 
-        return view('divida.index', compact('clientes'));
+        return view('divida.index', compact('clientes', 'mensagem'));
     }
 
     public function store(Request $request)
     {
-
-        if(!is_null($request->id)) {
-            $divida = Divida::find($request->id);
-        }
-        else {
-            $divida = new Divida();
-        }
+        $divida = new Divida();
 
         $divida->cliente_id = $request->cliente_id;
         $divida->divida = $request->divida;
+
+        $request->session()
+            ->flash(
+                'mensagem',
+                "Dívida de R$ {$divida->divida} atribuída com sucesso"
+            );
 
         $divida->save();
 

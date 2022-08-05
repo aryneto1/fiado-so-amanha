@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cliente;
+use App\Models\Divida;
 use Illuminate\Http\Request;
 
 class ClienteController extends Controller
@@ -10,8 +11,23 @@ class ClienteController extends Controller
     public function index(Request $request): object
     {
         $clientes = Cliente::all();
+        $mensagem = $request->session()->get('mensagem');
 
-        return view('cliente.index', compact('clientes'));
+        $dividas = Divida::all();
+
+        foreach ($clientes as $cliente) {
+            $cliente['divida'] = 0;
+        }
+
+        foreach ($dividas as $divida) {
+            foreach ($clientes as $cliente) {
+                if($cliente['id'] == $divida['cliente_id']) {
+                    $cliente['divida'] += floatval($divida['divida']);
+                }
+            }
+        }
+
+        return view('cliente.index', compact('clientes', 'mensagem'));
     }
 
     public function store(Request $request)
@@ -27,9 +43,14 @@ class ClienteController extends Controller
 
         }
 
-        $cliente->divida = $request->divida;
         $cliente->telefone = $request->telefone;
         $cliente->endereco = $request->endereco;
+
+        $request->session()
+            ->flash(
+                'mensagem',
+                "Cliente {$cliente->nome} criado com sucesso!"
+            );
 
         $cliente->save();
 

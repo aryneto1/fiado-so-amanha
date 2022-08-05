@@ -34,8 +34,8 @@ Route::get('/listagem/perfil/{id}', [\App\Http\Controllers\ClienteController::cl
 Route::get('/dividas', [\App\Http\Controllers\DividaController::class, 'index'])
     ->name('dividas');
 
-Route::post('/dividas/adicionar', [\App\Http\Controllers\ClienteController::class, 'store'])
+Route::post('/dividas/adicionar', [\App\Http\Controllers\DividaController::class, 'store'])
     ->name('addDividas');
-Route::put('/dividas/adicionar', [\App\Http\Controllers\ClienteController::class, 'store']);
+Route::put('/dividas/adicionar', [\App\Http\Controllers\DividaController::class, 'store']);
 
 require __DIR__.'/auth.php';

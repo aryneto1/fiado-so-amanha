@@ -5,6 +5,7 @@
         </h2>
     </x-slot>
 
+    @include('mensagem', ['mensagem' => $mensagem])
     <div class="py-12 container">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">

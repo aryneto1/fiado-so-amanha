@@ -21,10 +21,6 @@
                         <label for="endereco">Endereço</label>
                         <input type="text" class="form-control" name="endereco" id="endereco" placeholder="Endereço do cliente" required>
                     </div>
-                    <div class="form-group">
-                        <label for="divida">Dívida</label>
-                        <input type="text" class="form-control" name="divida" id="divida" placeholder="Valor da dívida do cliente" required>
-                    </div>
                     <a class="voltar btn btn-danger" data-title="Deseja realmente voltar?" href="{{ route('listagem') }}">Voltar</a>
                     <button type="submit" class="btn btn-primary">Salvar</button>
                 </form>
