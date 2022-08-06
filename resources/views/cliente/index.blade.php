@@ -51,7 +51,7 @@
 
                     <script>
                         $(document).ready( function () {
-                            window.urlListagem = "{{ route('editar') }}"
+                            window.urlListagem = "/listagem/editar"
                         });
                     </script>
                     <script src="{{ asset('js/cliente/cliente-index.js') }}"></script>
