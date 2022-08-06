@@ -27,9 +27,16 @@
                                 <td>R$ {{ $cliente->divida }}</td>
                                 <td class="bot">
                                     <button class="btn btn-outline-info btn-sm mr-1 botEditar" data-id="{{$cliente->id}}">
-                                        <i class="fas fa-edit"> Ver Perfil</i>
+                                        <i class="fas fa-edit"> Editar</i>
                                     </button>
-
+                                    <form method="post" action="/listagem/excluir/{{ $cliente->id }}"
+                                            onsubmit="return confirm('Tem certeza que deseja excluir {{ addslashes($cliente->nome) }}?')">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-outline-danger btn-sm mr-1 botDeletar">
+                                            <i class="far fa-trash-alt"> Excluir</i>
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
@@ -42,8 +49,16 @@
 
                     @include('cliente.create')
 
+                    <script>
+                        $(document).ready( function () {
+                            window.urlListagem = "{{ route('editar') }}"
+                        });
+                    </script>
+                    <script src="{{ asset('js/cliente/cliente-index.js') }}"></script>
                 </div>
             </div>
         </div>
     </div>
 </x-app-layout>
+
+

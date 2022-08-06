@@ -61,6 +61,12 @@ class ClienteController extends Controller
     {
         Cliente::destroy($request->id);
 
+        $request->session()
+            ->flash(
+                'mensagem',
+                "Cliente {$request->nome} removido com sucesso"
+            );
+
         return redirect()->route('listagem');
     }
 

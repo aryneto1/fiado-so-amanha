@@ -28,8 +28,13 @@ Route::post('/listagem/adicionar', [\App\Http\Controllers\ClienteController::cla
     ->name('adicionar');
 Route::put('/listagem/adicionar', [\App\Http\Controllers\ClienteController::class, 'store']);
 
+Route::post('/listagem/editar', [\App\Http\Controllers\ClienteController::class, 'show'])
+    ->name('editar');
+
 Route::get('/listagem/perfil/{id}', [\App\Http\Controllers\ClienteController::class, 'show'])
     ->name('perfil');
+
+Route::delete('/listagem/excluir/{id}', [\App\Http\Controllers\ClienteController::class, 'destroy']);
 
 Route::get('/dividas', [\App\Http\Controllers\DividaController::class, 'index'])
     ->name('dividas');
