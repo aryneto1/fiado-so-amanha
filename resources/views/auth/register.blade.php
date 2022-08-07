@@ -1,9 +1,10 @@
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
-            <a href="/">
+            <div class=" flex ">
                 <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
+                <span style="font-size: 2rem;" class=" ml-4 mt-4 inline-block align-bottom">Fiado Só Amanhã</span>
+            </div>
         </x-slot>
 
         <!-- Validation Errors -->
@@ -14,7 +15,7 @@
 
             <!-- Name -->
             <div>
-                <x-label for="name" :value="__('Name')" />
+                <x-label for="name" :value="__('Nome')" />
 
                 <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
             </div>
@@ -47,11 +48,11 @@
 
             <div class="flex items-center justify-end mt-4">
                 <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
+                    {{ __('Já se registrou?') }}
                 </a>
 
                 <x-button class="ml-4">
-                    {{ __('Register') }}
+                    {{ __('Registrar') }}
                 </x-button>
             </div>
         </form>

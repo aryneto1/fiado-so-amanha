@@ -1,8 +1,9 @@
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
-            <div class=" w-20">
+            <div class=" flex ">
                 <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                <span style="font-size: 2rem;" class=" ml-4 mt-4 inline-block align-bottom">Fiado Só Amanhã</span>
             </div>
         </x-slot>
 
