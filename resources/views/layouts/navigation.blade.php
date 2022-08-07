@@ -16,7 +16,10 @@
                         {{ __('Listagem') }}
                     </x-nav-link>
                     <x-nav-link :href="route('dividas')" :active="request()->routeIs('dividas')">
-                        {{ __('Registro de dividas') }}
+                        {{ __('Registro de Dívidas') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('historicoDividas')" :active="request()->routeIs('historicoDividas')">
+                        {{ __('Histórico de Dívidas') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -70,7 +73,10 @@
                 {{ __('listagem') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('dividas')" :active="request()->routeIs('dividas')">
-                {{ __('Registro de dividas') }}
+                {{ __('Registro de Dívidas') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('historicoDividas')" :active="request()->routeIs('historicoDividas')">
+                {{ __('Histórico de Dívidas') }}
             </x-responsive-nav-link>
         </div>
 

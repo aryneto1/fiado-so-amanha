@@ -41,6 +41,9 @@ Route::delete('/listagem/abater/{id}', [\App\Http\Controllers\ClienteController:
 Route::get('/dividas', [\App\Http\Controllers\DividaController::class, 'index'])
     ->name('dividas');
 
+Route::get('/historicoDividas', [\App\Http\Controllers\DividaController::class, 'historicoDividas'])
+    ->name('historicoDividas');
+
 Route::post('/dividas/adicionar', [\App\Http\Controllers\DividaController::class, 'store'])
     ->name('addDividas');
 Route::put('/dividas/adicionar', [\App\Http\Controllers\DividaController::class, 'store']);

@@ -59,6 +59,16 @@ class ClienteController extends Controller
 
     public function destroy(Request $request): string
     {
+
+        $cliente = Cliente::find($request->id);
+
+        $dividas = Divida::all();
+        foreach ($dividas as $divida) {
+            if($divida['cliente_id'] == $cliente->id) {
+                Divida::destroy($divida->id);
+            }
+        }
+
         Cliente::destroy($request->id);
 
         $request->session()
