@@ -33,4 +33,26 @@ class DividaController extends Controller
 
         return redirect()->route('dividas');
     }
+
+    public function historicoDividas(Request $request): object
+    {
+        $dividas = Divida::all();
+
+        $clientes = Cliente::all();
+
+        foreach ($dividas as $divida) {
+            $divida['cliente'] = "";
+        }
+
+        foreach ($dividas as $divida)    {
+            foreach ($clientes as $cliente) {
+                if($cliente['id'] == $divida['cliente_id']) {
+                    $divida['cliente'] = $cliente->nome;
+                }
+            }
+        }
+
+        return view('divida.historicoDividas', compact('dividas'));
+
+    }
 }
