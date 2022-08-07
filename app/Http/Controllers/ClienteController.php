@@ -64,7 +64,7 @@ class ClienteController extends Controller
         $request->session()
             ->flash(
                 'mensagem',
-                "Cliente {$request->nome} removido com sucesso"
+                "Cliente {$request->nome} removido com sucesso!"
             );
 
         return redirect()->route('listagem');
@@ -74,5 +74,25 @@ class ClienteController extends Controller
     {
         $cliente = Cliente::find($request->id);
         return response()->json($cliente);
+    }
+
+    public function destroyDivida(Request $request)
+    {
+        $cliente = Cliente::find($request->id);
+        $dividas = Divida::all();
+
+        foreach ($dividas as $divida) {
+            if($cliente['id'] == $divida['cliente_id']) {
+                Divida::destroy($divida['id']);
+            }
+        }
+
+        $request->session()
+            ->flash(
+                'mensagem',
+                "Dividas do cliente {$cliente->nome} abatidas com sucesso!"
+            );
+
+        return redirect()->route('listagem');
     }
 }

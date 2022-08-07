@@ -36,6 +36,8 @@ Route::get('/listagem/perfil/{id}', [\App\Http\Controllers\ClienteController::cl
 
 Route::delete('/listagem/excluir/{id}', [\App\Http\Controllers\ClienteController::class, 'destroy']);
 
+Route::delete('/listagem/abater/{id}', [\App\Http\Controllers\ClienteController::class, 'destroyDivida']);
+
 Route::get('/dividas', [\App\Http\Controllers\DividaController::class, 'index'])
     ->name('dividas');
 

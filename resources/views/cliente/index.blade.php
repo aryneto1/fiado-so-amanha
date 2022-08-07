@@ -30,9 +30,14 @@
                                         <button class="btn btn-outline-info btn-sm mr-1 botEditar" data-id="{{$cliente->id}}">
                                             <i class="fas fa-edit"> Editar</i>
                                         </button>
-                                        <button class="btn btn-outline-warning btn-sm mr-1 botAbater" data-id="{{$cliente->id}}">
-                                            <i class="fas fa-piggy-bank"> Abater</i>
-                                        </button>
+                                        <form method="post" action="/listagem/abater/{{ $cliente->id }}"
+                                            onsubmit="return confirm('Tem certeza que deseja abater a divida do cliente {{ addslashes($cliente->nome) }}?')">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn btn-outline-warning btn-sm mr-1 botAbater" data-id="{{$cliente->id}}">
+                                                <i class="fas fa-piggy-bank"> Abater</i>
+                                            </button>
+                                        </form>
                                         <form method="post" action="/listagem/excluir/{{ $cliente->id }}"
                                                 onsubmit="return confirm('Tem certeza que deseja excluir {{ addslashes($cliente->nome) }}?')">
                                             @csrf
